@@ -2,10 +2,11 @@
 
 
 let baseurl="https://backend3.vercel.app"
-
+// let baseurl="http://localhost:4000"
 const create = async (params, credentials, post) => {
 
-  try {
+  try {  
+    console.log("debug 1")
        const requestOptions = {
         method: 'POST',
         headers: { 
@@ -16,10 +17,11 @@ const create = async (params, credentials, post) => {
         authorization : credentials.t,
         body: JSON.stringify(post), 
     };
-
+    console.log("debug 2")
   let response = await fetch(`${baseurl}/api/post/`+params.userId,requestOptions)
-
+console.log("response",response)
     const Data = await response.json();
+    console.log("object",Data);
      return Data;
   } catch(err) {
     return err

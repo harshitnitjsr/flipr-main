@@ -24,7 +24,7 @@ const Post = (props1) => {
   
 
 const submitHandler = async (props) => {
-
+props.preventDefault()
 setPicLoading(true);
 
   if(!Text &&!pic)
@@ -45,18 +45,23 @@ const PostData = {
     }, {
       t: jwt.token
     }, PostData).then((d) => {
-      
-        setPic('')
-        setText('')
+       console.log(
+        'post.jsx',d
+       )
+
        props1.onAdd1(d)
+       console.log("object",props1.onAdd1(d));
           
     })
-     setText('')
-     document.getElementById('file').value = "";
+    console.log("main hoon don",props1);
+     
+     
+     console.log("main hoon sikander",props1);
       setPicLoading(false);
     } catch (error) {
           setPicLoading(false);
           console.log(error)
+          console.log("main hoon error",props1);
           toast.error('SomeThing Wrong',{position: toast.POSITION.TOP_LEFT,autoClose:1000})
       };
       setPicLoading(false);
@@ -100,7 +105,7 @@ const PostData = {
   <div className="d-flex align-items-center p-3 ps-4  mb-0">
   </div>
   <div className="">
-    <form action="" className=" d-flex flex-column ms-4 ">
+    <form onSubmit={submitHandler}className=" d-flex flex-column ms-4 ">
       <div>
         <textarea
           value={Text}
@@ -112,7 +117,7 @@ const PostData = {
           className="outline w-75 "
           placeholder={"Share your thoughts "+user.name}
         />
-        <button  onClick={submitHandler} className="btn btn-primary btn-md ms-4 px-4 b-post">
+        <button type='submit'  className="btn btn-primary btn-md ms-4 px-4 b-post">
           Post
         </button>
         <PulseLoader  loading={picLoading} size={15} />
