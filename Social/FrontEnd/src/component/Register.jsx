@@ -41,7 +41,7 @@ const Register = () => {
       body: JSON.stringify(data),
     };
 
-    const response = await fetch('http://localhost:4000/api/users/register', requestOptions);
+    const response = await fetch('https://backend3.vercel.app/api/users/register', requestOptions);
     const responseData = await response.json();
 
     if (!responseData.error) {

@@ -32,7 +32,7 @@ const [postdata,setpostdata]=useState({})
 
   const readPosts = async () => {
     try {
-        let response = await fetch('http://localhost:4000'+'/api/post/' + params.postid, {
+        let response = await fetch('https://backend3.vercel.app'+'/api/post/' + params.postid, {
           method: 'GET',
           headers: {
             'Accept': 'application/json',
@@ -127,7 +127,7 @@ const ImageHander=(pics)=>
 // e.preventdefault()
 
     try {
-      let response = await fetch('http://localhost:4000'+'/api/post/update/' + params.postid,{
+      let response = await fetch('https://backend3.vercel.app'+'/api/post/update/' + params.postid,{
         method: 'PUT',
         headers: {
           
